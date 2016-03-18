@@ -22,9 +22,14 @@ var port = process.env.PORT || 5000;
 var Factual = require('./util/factual');
 var Facebook = require('./util/facebook');
 
-// Factual.getFacebookUrl('e34cb495-77ae-4c38-8c06-40a6ff1a6b47', function(data) {
-//   console.log('got data',data)
-// })
+
+Factual.getFacebookId('e34cb495-77ae-4c38-8c06-40a6ff1a6b47', function(facebookId) {
+
+  Facebook.getPageEvents(facebookId, function(err, events) {
+    console.log(events)
+  })
+  
+})
 
 // Factual.getPlacesNear("Georgetown, TX", function(data) {
 //   console.log(data)

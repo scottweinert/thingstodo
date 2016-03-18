@@ -19,7 +19,7 @@ exports.getPlacesNear = function(location, done) {
 	});
 }
 
-exports.getFacebookUrl = function(factualId, done) {
+exports.getFacebookId = function(factualId, done) {
 
 	factual.get('/t/crosswalk?filters={"factual_id":"' + factualId + '","namespace":"facebook"}',
 		function (error, res) {
@@ -27,10 +27,10 @@ exports.getFacebookUrl = function(factualId, done) {
 		if (error) {
 			console.log(error)
 		}
-		console.log(res.data[0].url)
-
+		
 		if (res.data.length && res.data[0].url) {
-			done(res.data[0].url); 
+			var facebookUrlParts = res.data[0].url.split(".com/");
+			done(facebookUrlParts[1]); 
 		} else {
 			done(null)
 		}
