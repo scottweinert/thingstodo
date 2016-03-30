@@ -9,15 +9,11 @@ conf.joe = "HEY THERE";
 if (process.env.NODE_ENV === 'development') {
 
 	conf.mongo_config = {
-		'dbname' : 'base-auth-db',
+		'dbname' : 'things',
 		'host' : 'localhost',
 		'port' : 27017,
-		'auth' : {
-			'name': 'XXXXXXXX',
-			'pass': 'XXXXXXXX'
-		},
 		connect_string: function(){
-			return 'mongodb://' + this.auth.name + ':' + this.auth.pass + '@' + this.host + ':' + this.port + '/' + this.dbname;
+			return 'mongodb://' + this.host + ':' + this.port + '/' + this.dbname;
 		}
 	};
 
